@@ -1,4 +1,4 @@
-package com.younes.capco.cart_api;
+package com.younes.capco.cartexercise;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
