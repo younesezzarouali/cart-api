@@ -27,6 +27,7 @@ public class CartController {
 
     @GetMapping("/{clientId}")
     public Cart getCart(@PathVariable String clientId) {
+        System.out.println("==> Getting cart for client: " + clientId);
         return cartRepository.findById(clientId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
