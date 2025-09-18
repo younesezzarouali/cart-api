@@ -1,0 +1,10 @@
+- name: Build Docker image
+  run: docker buildx build --platform linux/amd64 -t ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }} .
+
+- name: Push to Amazon ECR
+  run: docker push ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+
+- name: Update Kubernetes deployment
+  run: |
+    kubectl set image deployment/cart-api-deployment \
+    cart-api=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
