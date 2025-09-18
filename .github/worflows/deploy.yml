@@ -6,7 +6,7 @@ on:
 
 env:
   AWS_REGION: eu-west-3
-  CLUSTER_NAME: demo-cluster
+  CLUSTER_NAME: demo
   ECR_REPOSITORY: cart-api
   ECR_REGISTRY: 695353648045.dkr.ecr.eu-west-3.amazonaws.com
 
