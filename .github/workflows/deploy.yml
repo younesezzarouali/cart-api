@@ -71,7 +71,7 @@ jobs:
       - name: Deploy to EKS
         run: |
           echo "👉 Mise à jour du déploiement avec la nouvelle image"
-          kubectl set image deployment/cart-api-deployment cart-api=$ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }}
+          kubectl set image deployment/cart-api-deployment cart-api-container=$ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }}
           
           echo "👉 Attente du rollout (max 600s)"
           if ! kubectl rollout status deployment/cart-api-deployment --timeout=600s; then
