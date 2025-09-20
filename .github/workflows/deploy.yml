@@ -70,6 +70,5 @@ jobs:
         run: aws eks update-kubeconfig --region $AWS_REGION --name $CLUSTER_NAME
       - name: Deploy to EKS
         run: |
-          kubectl set image deployment/cart-api-deployment \
-            cart-api-container=$ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }}
-          kubectl rollout status deployment/cart-api-deployment || true
+          kubectl rollout restart deployment cart-api-deployment
+          kubectl rollout status deployment/cart-api-deployment --timeout=600s
